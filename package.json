@@ -1,6 +1,6 @@
 {
   "name": "@vortenixinnovations/cloudder-common-module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "common module of cloudder project",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
