@@ -2,26 +2,26 @@
   "name": "@vortenixinnovations/cloudder-common-module",
   "version": "1.0.5",
   "description": "common module of cloudder project",
-  "main": "./build/index.js",
-  "types": "./build/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
-    "/build/**/*"
+    "/dist/**/*"
   ],
   "publishConfig": {
     "access": "public"
   },
   "exports": {
     ".": {
-      "types": "./build/index.d.ts",
-      "import": "./build/index.js",
-      "require": "./build/index.js",
-      "default": "./build/index.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
     },
     "./package.json": "./package.json"
   },
   "scripts": {
-    "clean": "del-cli ./build/*",
-    "build": "npm run clean && tsc",
+    "clean": "del-cli ./dist/*",
+    "build": "npm run clean && esbuild src/index.ts --bundle --platform=node --target=node18 --format=esm --packages=external --outfile=dist/index.js",
     "release": "npm version patch && npm run build && npm publish"
   },
   "dependencies": {
@@ -40,7 +40,8 @@
     "@types/express": "^5.0.3",
     "@types/node": "^24.7.0",
     "del-cli": "^7.0.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "esbuild": "^0.25.3"
   },
   "author": "midhunx01",
   "license": "ISC"

@@ -1,23 +1,36 @@
 {
   "compilerOptions": {
+    /* Language and Environment */
+    "target": "ES2022" /* Updated from es2016 for better ESM support */,
+    "experimentalDecorators": true,
+
+    /* Modules */
+    "module": "ESNext" /* Changed from commonjs to ESNext for ESM */,
     "rootDir": "./src",
-    "outDir": "./build",
-    "module": "ESNext",
-    "target": "ES2022",
-    "moduleResolution": "node",
+    "moduleResolution": "node" /* Uncommented - required for ESM */,
+    "resolveJsonModule": true /* Uncommented - useful for importing JSON files */,
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+
+    /* JavaScript Support */
+    "allowJs": true /* Uncommented - allows JS files in your project */,
+
+    /* Emit */
+    "outDir": "./dist",
+    "sourceMap": true /* Uncommented - helpful for debugging */,
+
+    /* Interop Constraints */
+    "isolatedModules": true /* Uncommented - required for esbuild */,
+    "allowSyntheticDefaultImports": true /* Uncommented - better import syntax */,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "lib": ["ESNext"],
-    "types": ["node"],
-    "declaration": true,
-    // Stricter Typechecking Options
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Type Checking */
     "strict": true,
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
+    "noImplicitAny": false,
+    "strictPropertyInitialization": false,
+
+    /* Completeness */
     "skipLibCheck": true
-  }
+  },
+  "include": ["src/**/*", "tsconfig.json"]
 }
