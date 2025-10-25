@@ -8,7 +8,7 @@ import {
   ConsumerConfig,
   DeliverPolicy,
 } from "nats";
-import { Subjects } from "./subjects";
+import { Subjects } from "./subjects.js";
 
 interface Event {
   subject: Subjects;
