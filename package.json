@@ -2,6 +2,7 @@
   "name": "@vortenixinnovations/cloudder-common-module",
   "version": "1.0.7",
   "description": "cloudder.io common module",
+  "type": "module",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "files": [
@@ -16,11 +17,17 @@
   "author": "midhunx01",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^24.9.1",
     "del-cli": "^5.1.0",
     "typescript": "^5.6.2"
   },
   "dependencies": {
+    "dotenv": "^17.2.3",
     "nats": "^2.29.3",
-    "node-nats-streaming": "^0.3.2"
+    "node": "^22.21.0",
+    "node-nats-streaming": "^0.3.2",
+    "pino": "^10.1.0",
+    "pino-http": "^11.0.0",
+    "pino-pretty": "^13.1.2"
   }
 }

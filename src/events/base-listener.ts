@@ -53,7 +53,7 @@ export abstract class Listener<T extends Event> {
     try {
       await this.manager.streams.info(streamName);
     } catch {
-      console.log(`🪄 Creating stream: ${streamName}`);
+      console.log(`Creating stream: ${streamName}`);
       await this.manager.streams.add({
         name: streamName,
         subjects: [this.subject],

@@ -1,28 +1,24 @@
-import { JetStreamClient, NatsConnection } from "nats";
-import { Subjects } from "./subjects";
-
-interface Event {
-  subject: Subjects;
-  data: any;
-}
+import { NatsConnection, StringCodec } from "nats";
+import { Event } from "./base-event";
+import { logger } from "../util/logger";
 
 export abstract class Publisher<T extends Event> {
   abstract subject: T["subject"];
+  protected client: NatsConnection;
+  private sc = StringCodec();
 
-  private client: JetStreamClient;
-
-  constructor(nc: NatsConnection) {
-    this.client = nc.jetstream();
+  constructor(client: NatsConnection) {
+    this.client = client;
   }
 
   async publish(data: T["data"]): Promise<void> {
-    try {
-      const ack = await this.client.publish(this.subject, JSON.stringify(data));
-      console.log("Event published to subject", this.subject);
-      console.log("Sequence:", ack.seq, "Stream:", ack.stream);
-    } catch (err) {
-      console.error("Failed to publish:", err);
-      throw err;
-    }
+    const encoded = this.sc.encode(JSON.stringify(data));
+
+    this.client.publish(this.subject, encoded);
+    await this.client.flush();
+
+    logger.info(
+      `Event published to [${this.subject}]: ${JSON.stringify(data)}`
+    );
   }
 }
