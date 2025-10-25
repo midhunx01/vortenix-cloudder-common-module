@@ -1,4 +1,4 @@
-import { Subjects } from "./subjects";
+import { Subjects } from "./subjects.js";
 
 export interface AccountCreatedEvent {
   subject: Subjects.AccountCreated;
