@@ -1,6 +1,6 @@
 {
   "name": "@vortenixinnovations/cloudder-common-module",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "cloudder.io common module",
   "type": "module",
   "main": "./build/index.js",
