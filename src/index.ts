@@ -6,3 +6,4 @@ export * from "./events/account-created-event.js";
 export * from "./events/request-event.js";
 export * from "./events/base-request-publisher.js";
 export * from "./events/base-request-listener.js";
+export * from "./events/manager-create-request-event.js";
