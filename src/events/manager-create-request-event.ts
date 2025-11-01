@@ -9,9 +9,9 @@ export interface ManagerCreateRequestEvent extends RequestEvent {
     contactNumber: string;
   };
   response: {
-    id: string;
-    email: string;
-    password: string;
+    id?: string;
+    email?: string;
+    password?: string | null;
     error?: string;
   };
 }
