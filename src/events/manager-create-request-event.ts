@@ -6,7 +6,7 @@ export interface ManagerCreateRequestEvent extends RequestEvent {
   request: {
     fullname: string;
     email: string;
-    contactNumber: string;
+    contactNumber?: string;
   };
   response: {
     id?: string;
