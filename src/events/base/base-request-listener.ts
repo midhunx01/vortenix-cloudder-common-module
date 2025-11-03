@@ -1,7 +1,6 @@
-// events/base-request-listener.ts
 import { NatsConnection, StringCodec, SubscriptionOptions } from "nats";
-import { logger } from "../util/logger/index.js";
 import { RequestEvent } from "./request-event.js";
+import { logger } from "../../util/logger/index.js";
 
 export abstract class RequestListener<T extends RequestEvent> {
   abstract subject: T["subject"];

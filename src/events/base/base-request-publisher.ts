@@ -1,6 +1,6 @@
 import { NatsConnection, StringCodec } from "nats";
-import { logger } from "../util/logger/index.js";
 import { RequestEvent } from "./request-event.js";
+import { logger } from "../../util/logger/index.js";
 
 export abstract class RequestPublisher<T extends RequestEvent> {
   abstract subject: T["subject"];
