@@ -9,6 +9,7 @@ import {
   DeliverPolicy,
 } from "nats";
 import { Subjects } from "./subjects.js";
+import { logger } from "../../util/logger/index.js";
 
 interface Event {
   subject: Subjects;
@@ -53,7 +54,7 @@ export abstract class Listener<T extends Event> {
     try {
       await this.manager.streams.info(streamName);
     } catch {
-      console.log(`Creating stream: ${streamName}`);
+      logger.info(`Creating stream: ${streamName}`);
       await this.manager.streams.add({
         name: streamName,
         subjects: [this.subject],
@@ -65,11 +66,11 @@ export abstract class Listener<T extends Event> {
     try {
       await this.manager.consumers.info(streamName, durableName);
     } catch {
-      console.log(`👂 Creating durable consumer: ${durableName}`);
+      logger.info(`Creating durable consumer: ${durableName}`);
       await this.manager.consumers.add(streamName, this.subscriptionOptions());
     }
 
-    console.log(
+    logger.info(
       `Listening for subject "${this.subject}" with queue group "${durableName}"`
     );
 
@@ -87,7 +88,7 @@ export abstract class Listener<T extends Event> {
         // Handle timeout or other errors
         if (err.code !== "408") {
           // 408 is timeout, which is normal
-          console.error("Error getting message:", err);
+          logger.info("Error getting message:", err);
           await new Promise((resolve) => setTimeout(resolve, 1000));
         }
       }
